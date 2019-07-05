@@ -4,9 +4,7 @@ package springbootDemo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import springbootDemo.entity.Car;
 import springbootDemo.service.MysqlService;
 
@@ -33,4 +31,22 @@ public class MysqlController {
     public List<Car> list(){
         return mysqlService.findList();
     }
+
+    //添加车辆
+    @RequestMapping(value = "/addCar",method = RequestMethod.POST)
+    @ResponseBody
+    public Integer addCar(@RequestBody Car car){
+        mysqlService.addCar(car);
+        return 1;
+    }
+
+    //删除车辆
+    @RequestMapping(value = "/delCar",method = RequestMethod.POST)
+    @ResponseBody
+    public Integer delCar(@RequestBody Car car){
+        mysqlService.delCar(car);
+        return 1;
+    }
+
+
 }
