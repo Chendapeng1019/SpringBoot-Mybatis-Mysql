@@ -4,6 +4,7 @@ package springbootDemo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import springbootDemo.entity.Car;
@@ -19,6 +20,7 @@ import java.util.List;
  **/
 
 @Controller
+//@CrossOrigin(origins = "http://localhost:63342",maxAge = 3600 )
 @RequestMapping("/mysql")
 public class MysqlController {
 
@@ -29,7 +31,6 @@ public class MysqlController {
     @RequestMapping("/carList")
     @ResponseBody
     public List<Car> list(){
-
         return mysqlService.findList();
     }
 }
